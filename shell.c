@@ -15,10 +15,11 @@
 int main(void)
 {
 	char *command;
-	
+
 	while (1)
 	{
 		char *environ[] = {NULL};
+
 		display_prompt(); /* Display the prompt */
 		command = read_command(); /* Read user input */
 
@@ -63,6 +64,8 @@ char *read_command(void)
 /**
  * execute_command - Execute a command with execve
  * @command: command to be executed
+ * @custom_environ: array of character strings
+ * with environment variables
  * Return: 0 on success and -1 on failure
  */
 int execute_command(char *command, char *custom_environ[])
