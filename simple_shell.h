@@ -15,4 +15,7 @@
 #include <signal.h> /* handles different signals */
 #include <errno.h> /*report and retrieve error conditions */
 
+void display_prompt(void);
+char *read_command(void);
+int execute_command(char *command, char *custom_environ[]);
 #endif
