@@ -1,25 +1,29 @@
-#include "simple_shell.h"
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <stdlib.h>
+#include <signal.h>
+#include "simple_shell.h"
+
+/* Function prototypes */
+void display_prompt(void);
+char *read_command(void);
+int execute_command(char *command, char *custom_environ[]);
 
 /**
- * main - Entry of simple shell program
- * Description: function displays prompt to user
- * and executes command
- * the displays new line
- *
- * Return: Always 0.
+ * main - Entry of function main
+ * Description: running simple shell
+ * Return: Always 0
  */
 int main(void)
 {
 	char *command;
+	char *environ[] = {NULL}; /* Environment variables array */
+
+	signal(SIGINT, SIG_IGN); /* Ignore Ctrl+C (SIGINT) signal */
 
 	while (1)
 	{
-		char *environ[] = {NULL};
-
 		display_prompt(); /* Display the prompt */
 		command = read_command(); /* Read user input */
 
@@ -34,15 +38,14 @@ int main(void)
 	return (0);
 }
 /**
- * display_prompt - Displays expected prompt
+ * display_prompt - Display expected prompt
  */
 void display_prompt(void)
 {
-	char prompt[] = "$ "; /* Prompt string */
+	char prompt[] = "$ ";
 
-	write(1, prompt, sizeof(prompt) - 1); /* Write prompt to stdout */
+	write(1, prompt, sizeof(prompt) - 1);
 }
-
 /**
  * read_command - Reads command given
  * Return: Pointer to allocated string or NULL
@@ -52,19 +55,18 @@ char *read_command(void)
 	char *line = NULL;
 	size_t len = 0;
 
-	if (getline(&line, &len, stdin) == -1) /* Read user input */
+	if (getline(&line, &len, stdin) == -1)
 	{
-		free(line); /* Free allocated memory */
+		free(line);
 		return (NULL);
 	}
-
 	return (line);
 }
 
 /**
- * execute_command - Execute a command with execve
+ * execute_command - Exeecute a command with execve
  * @command: command to be executed
- * @custom_environ: array of character strings
+ * @custom_environ: array of character string
  * with environment variables
  * Return: 0 on success and -1 on failure
  */
@@ -88,7 +90,7 @@ int execute_command(char *command, char *custom_environ[])
 		args[1] = NULL;
 
 		execve(command, args, custom_environ);
-		perror("./hsh");
+		perror("hsh"); /* Display error message */
 		_exit(EXIT_FAILURE); /* Use _exit to avoid flushing buffers */
 	}
 	else /* Parent process */
