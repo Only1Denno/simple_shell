@@ -14,6 +14,7 @@
 #include <sys/stat.h> /* get status of file */
 #include <signal.h> /* handles different signals */
 #include <errno.h> /*report and retrieve error conditions */
+#include <string.h>
 
 void display_prompt(void);
 char *read_command(void);

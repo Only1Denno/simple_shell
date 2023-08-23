@@ -15,7 +15,7 @@
 int main(void)
 {
 	char *command;
-
+	
 	while (1)
 	{
 		char *environ[] = {NULL};
@@ -85,7 +85,7 @@ int execute_command(char *command, char *custom_environ[])
 		args[1] = NULL;
 
 		execve(command, args, custom_environ);
-		perror("execve");
+		perror("./hsh");
 		_exit(EXIT_FAILURE); /* Use _exit to avoid flushing buffers */
 	}
 	else /* Parent process */
