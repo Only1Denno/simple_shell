@@ -108,3 +108,10 @@ Simple shell 0.1 +
 
 Handle command lines with arguments
 
+4. Simple shell 0.4
+mandatory
+Simple shell 0.3 +
+
+Implement the exit built-in, that exits the shell
+Usage: exit
+You don’t have to handle any argument to the built-in exit
