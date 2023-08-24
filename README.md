@@ -134,4 +134,8 @@ You don’t have to:
 
 be able to move the cursor
 
+7. Simple shell 0.2.1
+#advanced
+Simple shell 0.2 +
 
+You are not allowed to use strtok
