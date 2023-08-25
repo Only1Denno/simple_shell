@@ -2,16 +2,18 @@
 #define _MAIN_H_
 
 
-#include <fcntl.h>
-#include <signal.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <sys/wait.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <errno.h>
-#include <stdio.h>
+#include <fcntl.h>
+#include <signal.h>
+#include <sys/stat.h>
+#include <sys/wait.h>
 #include <string.h>
+#include <errno.h>
+#include <sys/types.h>
+
+
 
 #define END_OF_FILE -2
 #define EXIT -3
