@@ -1,4 +1,4 @@
-#include "main.h"
+#include "simple_shell.h"
 
 int num_len(int num);
 char *_itoa(int num);
