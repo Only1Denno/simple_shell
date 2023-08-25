@@ -7,7 +7,7 @@ int proc_file_commands(char *file_path, int *exe_ret);
  * doesnt_open - If the file doesn't exist or lacks proper permissions, print
  * a doesnt open error.
  * @find_path: Path to the supposed file.
- *
+ * Description: When the given command is not found within your PATH system
  * Return: 127.
  */
 
