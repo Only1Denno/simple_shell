@@ -23,9 +23,9 @@ char *name;
 int hist;
 
 /*
-* Command - Finding file path 
-* doesnt_open(char *find_path);
-*int proc_file_commands(char *find_path, int *exe_ret)
+ * Command - Finding file path
+ * doesnt_open(char *find_path);
+ * int proc_file_commands(char *find_path, int *exe_ret)
 */
 
 /**
