@@ -1,17 +1,17 @@
 #include "simple_shell.h"
 
-int cant_open(char *file_path);
+int doesnt_open(char *file_path);
 int proc_file_commands(char *file_path, int *exe_ret);
 
 /**
- * cant_open - If the file doesn't exist or lacks proper permissions, print
- * a cant open error.
- * @file_path: Path to the supposed file.
+ * doesnt_open - If the file doesn't exist or lacks proper permissions, print
+ * a doesnt open error.
+ * @find_path: Path to the supposed file.
  *
  * Return: 127.
  */
 
-int cant_open(char *file_path)
+int doesnt_open(char *find_path)
 {
 	char *error, *hist_str;
 	int len;
@@ -20,7 +20,7 @@ int cant_open(char *file_path)
 	if (!hist_str)
 		return (127);
 
-	len = _strlen(name) + _strlen(hist_str) + _strlen(file_path) + 16;
+	len = _strlen(name) + _strlen(hist_str) + _strlen(find_path) + 16;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
@@ -31,8 +31,8 @@ int cant_open(char *file_path)
 	_strcpy(error, name);
 	_strcat(error, ": ");
 	_strcat(error, hist_str);
-	_strcat(error, ": Can't open ");
-	_strcat(error, file_path);
+	_strcat(error, ": Doesn't open ");
+	_strcat(error, find_path);
 	_strcat(error, "\n");
 
 	free(hist_str);
@@ -44,14 +44,14 @@ int cant_open(char *file_path)
 /**
  * proc_file_commands - Takes a file and attempts to run the commands stored
  * within.
- * @file_path: Path to the file.
+ * @find_path: Path to the file.
  * @exe_ret: Return value of the last executed command.
  *
  * Return: If file couldn't be opened - 127.
  *	   If malloc fails - -1.
  *	   Otherwise the return value of the last command ran.
  */
-int proc_file_commands(char *file_path, int *exe_ret)
+int proc_file_commands(char *find_path, int *exe_ret)
 {
 	ssize_t file, b_read, i;
 	unsigned int line_size = 0;
@@ -61,10 +61,10 @@ int proc_file_commands(char *file_path, int *exe_ret)
 	int ret;
 
 	hist = 0;
-	file = open(file_path, O_RDONLY);
+	file = open(find_path, O_RDONLY);
 	if (file == -1)
 	{
-		*exe_ret = cant_open(file_path);
+		*exe_ret = doesnt_open(find_path);
 		return (*exe_ret);
 	}
 	line = malloc(sizeof(char) * old_size);

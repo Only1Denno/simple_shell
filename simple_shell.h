@@ -22,6 +22,12 @@ char *name;
 /* Global history counter */
 int hist;
 
+/*
+* Command - Finding file path 
+* doesnt_open(char *find_path);
+*int proc_file_commands(char *find_path, int *exe_ret)
+*/
+
 /**
  * struct list_s - A new struct type defining a linked list.
  * @dir: A directory path.
